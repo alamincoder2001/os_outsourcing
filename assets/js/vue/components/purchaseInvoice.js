@@ -332,7 +332,7 @@ const purchaseInvoice = Vue.component("purchase-invoice", {
                     </style>
                 </head>
                 <body>
-                    <div class="container">
+                    <!--<div class="container">
                         <div class="row">
                             <div class="col-xs-2"><img src="/uploads/company_profile_thum/${
                               this.currentBranch.Company_Logo_thum
@@ -351,7 +351,7 @@ const purchaseInvoice = Vue.component("purchase-invoice", {
                                 <div style="border-bottom: 4px double #454545;margin-top:7px;margin-bottom:7px;"></div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
@@ -359,7 +359,7 @@ const purchaseInvoice = Vue.component("purchase-invoice", {
                             </div>
                         </div>
                     </div>
-                    <div class="container" style="position:fixed;bottom:15px;width:100%;">
+                    <!--<div class="container" style="position:fixed;bottom:15px;width:100%;">
                         <div class="row" style="border-bottom:1px solid #ccc;margin-bottom:5px;padding-bottom:6px;">
                             <div class="col-xs-6">
                                 <span style="text-decoration:overline;">Received by</span><br><br>
@@ -380,7 +380,7 @@ const purchaseInvoice = Vue.component("purchase-invoice", {
                                 Developed by: Link-Up Technologoy, Contact no: 01911978897
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </body>
                 </html>
             `);

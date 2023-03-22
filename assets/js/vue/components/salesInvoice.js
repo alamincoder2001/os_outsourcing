@@ -83,7 +83,7 @@ const salesInvoice = Vue.component("sales-invoice", {
                 <div class="row">
                     <div class="col-xs-6">
                         <br>
-                        <table class="pull-left" style="width:50%">
+                        <table class="pull-left" style="width:75%">
                             <tr>
                                 <td><strong>Previous Due:</strong></td>
                                 
