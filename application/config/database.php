@@ -10,9 +10,9 @@ $db['default'] = array(
 
 	'username' => 'root',
 	'password' => '',
-	// 'username' => 'bigektuw',
-	// 'password' => 'sChzA2HnVel0',
-	'database' => 'opensource',
+	// 'username' => 'osoutsou_outsourcing',
+	// 'password' => '~GzRR2UgieVC',
+	'database' => 'osoutsou_outsourcing',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
