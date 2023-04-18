@@ -180,23 +180,23 @@ class Sales extends CI_Controller
                 $this->db->insert('tbl_saledetails', $saleDetails);
 
                 //update stock
-                $inventoryCount = $this->db->query("select * from tbl_currentinventory where product_id = ? and branch_id = ?", [$cartProduct->productId, $this->session->userdata('BRANCHid')])->num_rows();
-                if ($inventoryCount == 0) {
-                    $inventory = array(
-                        'product_id'        => $cartProduct->productId,
-                        'sales_quantity' => $cartProduct->quantity,
-                        'branch_id'         => $this->session->userdata('BRANCHid')
-                    );
+                // $inventoryCount = $this->db->query("select * from tbl_currentinventory where product_id = ? and branch_id = ?", [$cartProduct->productId, $this->session->userdata('BRANCHid')])->num_rows();
+                // if ($inventoryCount == 0) {
+                //     $inventory = array(
+                //         'product_id'        => $cartProduct->productId,
+                //         'sales_quantity' => $cartProduct->quantity,
+                //         'branch_id'         => $this->session->userdata('BRANCHid')
+                //     );
 
-                    $this->db->insert('tbl_currentinventory', $inventory);
-                } else {
-                    $this->db->query("
-                        update tbl_currentinventory 
-                        set sales_quantity = sales_quantity + ? 
-                        where product_id = ? 
-                        and branch_id = ?
-                    ", [$cartProduct->quantity, $cartProduct->productId, $this->session->userdata('BRANCHid')]);
-                }
+                //     $this->db->insert('tbl_currentinventory', $inventory);
+                // } else {
+                //     $this->db->query("
+                //         update tbl_currentinventory 
+                //         set sales_quantity = sales_quantity + ? 
+                //         where product_id = ? 
+                //         and branch_id = ?
+                //     ", [$cartProduct->quantity, $cartProduct->productId, $this->session->userdata('BRANCHid')]);
+                // }
             }
             // $currentDue = $data->sales->previousDue + ($data->sales->total - $data->sales->paid);
             // //Send sms
@@ -466,6 +466,7 @@ class Sales extends CI_Controller
                 'SaleMaster_DueAmount'           => $data->sales->due,
                 'SaleMaster_Previous_Due'        => $data->sales->previousDue,
                 'SaleMaster_Description'         => $data->sales->note,
+                'returnAmount'                   => $data->sales->returnAmount,
                 'shipping_cus_name'              => $data->sales->shipping_cus_name,
                 'shipping_mobile'                => $data->sales->shipping_mobile,
                 'shipping_address'               => $data->sales->shipping_address,

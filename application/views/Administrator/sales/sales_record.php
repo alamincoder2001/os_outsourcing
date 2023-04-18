@@ -170,7 +170,7 @@
 								<td style="text-align:center;">
 									<a href="" title="Sale Invoice" v-bind:href="`/sale_invoice_print/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file"></i></a>
 									<a href="" title="Chalan" v-bind:href="`/chalan/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file-o"></i></a>
-									<?php if ($this->session->userdata('accountType') != 'u') { ?>
+									<?php if ($this->session->userdata('accountType') == 'm') { ?>
 										<a href="javascript:" title="Edit Sale" @click="checkReturnAndEdit(sale)"><i class="fa fa-edit"></i></a>
 										<a href="" title="Delete Sale" @click.prevent="deleteSale(sale.SaleMaster_SlNo)"><i class="fa fa-trash"></i></a>
 									<?php } ?>
@@ -236,9 +236,9 @@
 								<td style="text-align:center;">
 									<a href="" title="Sale Invoice" v-bind:href="`/sale_invoice_print/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file"></i></a>
 									<a href="" title="Chalan" v-bind:href="`/chalan/${sale.SaleMaster_SlNo}`" target="_blank"><i class="fa fa-file-o"></i></a>
-									<a v-if="sale.isEditEnable == 'yes'" href="javascript:" title="Edit Sale" @click="checkReturnAndEdit(sale)"><i class="fa fa-edit"></i></a>
-									<?php if ($this->session->userdata('accountType') != 'u') { ?>
-										<a v-if="sale.Status == 'p'" href="" title="Approve" @click.prevent="approveItem(sale.SaleMaster_SlNo)"><i style="font-size:18px" class="fa fa-check-square"></i></a>
+									<a v-if="sale.Status == 'p'" href="" title="Approve" @click.prevent="approveItem(sale.SaleMaster_SlNo)"><i style="font-size:18px" class="fa fa-check-square"></i></a>
+									<?php if ($this->session->userdata('accountType') == 'm') { ?>
+										<a v-if="sale.isEditEnable == 'yes'" href="javascript:" title="Edit Sale" @click="checkReturnAndEdit(sale)"><i class="fa fa-edit"></i></a>
 										<a href="" title="Delete Sale" @click.prevent="deleteSale(sale.SaleMaster_SlNo)"><i class="fa fa-trash"></i></a>
 									<?php } ?>
 								</td>

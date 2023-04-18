@@ -76,10 +76,10 @@
                         </table>
                     </div>
                 </div>
-                <div class="row"
-                    style="border-bottom:1px solid #ccc;margin-bottom:5px;padding-bottom:6px; margin-top:100px;">
+                <div class="row" style="border-bottom:1px solid #ccc;margin-bottom:5px;padding-bottom:6px; margin-top:100px;">
                     <div class="col-xs-6">
                         <span style="text-decoration:overline;">Received by</span><br><br>
+                        <p style="text-align: justify;"><span style="font-weight:bold;">Note: </span>{{sales.SaleMaster_Description}}</p><br>
                         ** THANK YOU FOR YOUR BUSINESS **
                     </div>
                     <div class="col-xs-6 text-right">

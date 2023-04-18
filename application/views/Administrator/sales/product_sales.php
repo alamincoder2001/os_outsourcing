@@ -225,7 +225,7 @@
                                             v-on:input="productTotal" />
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="col-xs-3 control-label no-padding-right"> Discount</label>
                                     <div class="col-xs-4">
                                         <input type="number" id="ProductDiscountPercent" placeholder="%" step="0.01"
@@ -238,7 +238,7 @@
                                             min="0.00" class="form-control"
                                             v-model="selectedProduct.Product_DiscountTaka" v-on:input="productTotal" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label class="col-xs-3 control-label no-padding-right"> Quantity </label>
                                     <div class="col-xs-9">
@@ -308,7 +308,7 @@
                             <th style="width:15%;color:#000;">Category</th>
                             <th style="width:7%;color:#000;">Qty</th>
                             <th style="width:8%;color:#000;">Rate</th>
-                            <th style="width:8%;color:#000;">Discount</th>
+                            <!-- <th style="width:8%;color:#000;">Discount</th> -->
                             <th style="width:15%;color:#000;">Total Amount</th>
                             <th style="width:10%;color:#000;">Action</th>
                         </tr>
@@ -321,7 +321,7 @@
                             <td>{{ product.categoryName }}</td>
                             <td>{{ product.quantity }}</td>
                             <td>{{ product.salesRate }}</td>
-                            <td>{{ product.salesDiscount }}</td>
+                            <!-- <td>{{ product.salesDiscount }}</td> -->
                             <td>{{ product.total }}</td>
                             <td><a href="" v-on:click.prevent="removeFromCart(sl)"><i class="fa fa-trash"></i></a></td>
                         </tr>
@@ -376,6 +376,18 @@
                                                 <div class="col-xs-12">
                                                     <input type="number" id="subTotal" class="form-control"
                                                         v-model="sales.subTotal" readonly />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr v-if="sales.salesId != ''">
+                                        <td>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 control-label no-padding-right">Return Amount</label>
+                                                <div class="col-xs-12">
+                                                    <input type="number" id="returnAmount" class="form-control"
+                                                        v-model="sales.returnAmount"/>
                                                 </div>
                                             </div>
                                         </td>
@@ -553,6 +565,7 @@ new Vue({
                 due: 0.00,
                 isService: '<?php echo $isService; ?>',
                 note: '',
+                returnAmount: 0,
 
                 shipping_cus_name: '',
                 shipping_mobile: '',
@@ -933,29 +946,30 @@ new Vue({
                     alert('Edit Not Possible due to 24 Hours is over')
                     return;
                 }
-                this.sales.salesBy = sales.AddBy;
-                this.sales.salesFrom = sales.SaleMaster_branchid;
-                this.sales.salesDate = sales.SaleMaster_SaleDate;
-                this.sales.salesType = sales.SaleMaster_SaleType;
-                this.sales.customerId = sales.SalseCustomer_IDNo;
-                this.sales.employeeId = sales.Employee_SlNo;
-                this.sales.subTotal = sales.SaleMaster_SubTotalAmount;
-                this.sales.discount = sales.SaleMaster_TotalDiscountAmount;
-                this.sales.vat = sales.SaleMaster_TaxAmount;
+                this.sales.salesBy       = sales.AddBy;
+                this.sales.salesFrom     = sales.SaleMaster_branchid;
+                this.sales.salesDate     = sales.SaleMaster_SaleDate;
+                this.sales.salesType     = sales.SaleMaster_SaleType;
+                this.sales.customerId    = sales.SalseCustomer_IDNo;
+                this.sales.employeeId    = sales.Employee_SlNo;
+                this.sales.subTotal      = sales.SaleMaster_SubTotalAmount;
+                this.sales.discount      = sales.SaleMaster_TotalDiscountAmount;
+                this.sales.vat           = sales.SaleMaster_TaxAmount;
                 this.sales.transportCost = sales.SaleMaster_Freight;
-                this.sales.loadingCost = sales.SaleMaster_loadingCost;
-                this.sales.total = sales.SaleMaster_TotalSaleAmount;
-                this.sales.paid = sales.SaleMaster_PaidAmount;
-                this.sales.previousDue = sales.SaleMaster_Previous_Due;
-                this.sales.due = sales.SaleMaster_DueAmount;
-                this.sales.note = sales.SaleMaster_Description;
+                this.sales.loadingCost   = sales.SaleMaster_loadingCost;
+                this.sales.total         = sales.SaleMaster_TotalSaleAmount;
+                this.sales.paid          = sales.SaleMaster_PaidAmount;
+                this.sales.previousDue   = sales.SaleMaster_Previous_Due;
+                this.sales.due           = sales.SaleMaster_DueAmount;
+                this.sales.note          = sales.SaleMaster_Description;
+                this.sales.returnAmount  = sales.returnAmount;
 
                 this.sales.shipping_cus_name = sales.shipping_cus_name;
-                this.sales.shipping_mobile = sales.shipping_mobile;
-                this.sales.shipping_address = sales.shipping_address;
+                this.sales.shipping_mobile   = sales.shipping_mobile;
+                this.sales.shipping_address  = sales.shipping_address;
 
-                this.oldCustomerId = sales.SalseCustomer_IDNo;
-                this.oldPreviousDue = sales.SaleMaster_Previous_Due;
+                this.oldCustomerId       = sales.SalseCustomer_IDNo;
+                this.oldPreviousDue      = sales.SaleMaster_Previous_Due;
                 this.sales_due_on_update = sales.SaleMaster_DueAmount;
 
                 this.vatPercent = parseFloat(this.sales.vat) * 100 / parseFloat(this.sales
@@ -976,7 +990,7 @@ new Vue({
                     Customer_SlNo: sales.SalseCustomer_IDNo,
                     Customer_Code: sales.Customer_Code,
                     Customer_Name: sales.Customer_Name,
-                    display_name: sales.Customer_Type == 'G' ? 'General Customer' :
+                    display_name : sales.Customer_Type == 'G' ? 'General Customer': 
                         `${sales.Customer_Code} - ${sales.Customer_Name}`,
                     Customer_Mobile: sales.Customer_Mobile,
                     Customer_Address: sales.Customer_Address,

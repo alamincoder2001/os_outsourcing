@@ -63,7 +63,6 @@ const salesInvoice = Vue.component("sales-invoice", {
                                     <td>Description</td>
                                     <td>Total Qty</td>
                                     <td>Unit Price</td>
-                                    <td>Discount Price</td>
                                     <td>Total</td>
                                 </tr>
                             </thead>
@@ -73,7 +72,6 @@ const salesInvoice = Vue.component("sales-invoice", {
                                     <td style="text-align:left">{{ product.Product_Name }}</td>                                   
                                     <td> {{ product.SaleDetails_TotalQuantity }} {{ product.Unit_Name }}</td>
                                     <td>{{ product.SaleDetails_Rate }}</td>
-                                    <td>{{ product.SaleDetails_Discount }}</td>
                                     <td align="right">{{ product.SaleDetails_TotalAmount }}</td>
                                 </tr>
                             </tbody>
@@ -102,6 +100,12 @@ const salesInvoice = Vue.component("sales-invoice", {
                                 
                                 <td style="text-align:right">{{ (parseFloat(sales.SaleMaster_Previous_Due) + parseFloat(sales.SaleMaster_DueAmount == null ? 0.00 : sales.SaleMaster_DueAmount)).toFixed(2) }}</td>
                             </tr>
+
+                            <span v-if="parseFloat(sales.returnAmount) > 0"><br><br><br></span>
+                            <tr v-if="parseFloat(sales.returnAmount) > 0">
+                                <td><strong>Return Amount:</strong></td>
+                                <td style="text-align:right">{{ sales.returnAmount }}</td>
+                            </tr>
                         </table>
                     </div>
                     <div class="col-xs-6">
@@ -114,7 +118,7 @@ const salesInvoice = Vue.component("sales-invoice", {
                                 <td><strong>VAT:</strong></td>
                                 <td style="text-align:right">{{ sales.SaleMaster_TaxAmount }}</td>
                             </tr>
-                            <tr>
+                            <tr v-if="parseFloat(sales.SaleMaster_TotalDiscountAmount) > 0">
                                 <td><strong>Discount:</strong></td>
                                 <td style="text-align:right">{{ sales.SaleMaster_TotalDiscountAmount }}</td>
                             </tr>

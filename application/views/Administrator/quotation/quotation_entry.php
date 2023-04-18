@@ -149,7 +149,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right"> Sale Rate </label>
                                     <div class="col-sm-9">
-                                        <input type="number" placeholder="Rate" class="form-control"
+                                        <input type="number" step="0.01" min="0" placeholder="Rate" class="form-control"
                                             v-model="selectedProduct.Product_SellingPrice" v-on:input="productTotal" />
                                     </div>
                                 </div>

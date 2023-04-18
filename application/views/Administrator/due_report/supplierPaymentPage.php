@@ -122,7 +122,7 @@
 							<label class="col-md-4 control-label">Amount</label>
 							<label class="col-md-1">:</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control" v-model="payment.SPayment_amount" required>
+								<input type="number" step="0.01" min="0" class="form-control" v-model="payment.SPayment_amount" required>
 							</div>
 						</div>
 						<div class="form-group">
