@@ -889,8 +889,8 @@ new Vue({
             let url = "/add_sales";
             if (this.sales.salesId != 0) {
                 url = "/update_sales";
-                this.sales.previousDue = parseFloat((this.sales.previousDue - this.sales_due_on_update))
-                    .toFixed(2);
+                // this.sales.previousDue = parseFloat((this.sales.previousDue - this.sales_due_on_update))
+                //     .toFixed(2);
             }
 
             if (parseFloat(this.selectedCustomer.Customer_Credit_Limit) < (parseFloat(this.sales.due) +
